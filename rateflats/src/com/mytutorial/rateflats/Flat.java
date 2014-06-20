@@ -31,7 +31,7 @@ public class Flat implements Serializable, Comparable<Flat>{
     private Boolean isWaterIncluded;
     private Boolean isPermittedAContractOfSixMonths;
     
-    private Boolean ratingToSortBy;
+    private Double finalRating;
     
 	public String getNameOfStreetandNumber() {
 		return nameOfStreetandNumber;
@@ -104,11 +104,11 @@ public class Flat implements Serializable, Comparable<Flat>{
 		this.isPermittedAContractOfSixMonths = isPermittedAContractOfSixMonths;
 	}
     
-	public Boolean getRatingToSortBy() {
-		return ratingToSortBy;
+	public Double getFinalRating() {
+		return finalRating;
 	}
-	public void setRatingToSortBy(Boolean ratingToSortBy) {
-		this.ratingToSortBy = ratingToSortBy;
+	public void setFinalRating(Double finalRating) {
+		this.finalRating = finalRating;
 	}
 	
 	public Double returnRateDistance(){
@@ -144,11 +144,10 @@ public class Flat implements Serializable, Comparable<Flat>{
 			area = 90;
 		}
 		rateArea = rateArea + ((area-30.0)/12);
-		System.out.println("La nota-área es: "+rateArea.toString());
 		return rateArea;
 	}
 	public int compareTo(Flat otherFlat) {
 		// TODO Auto-generated method stub
-		return this.ratingToSortBy.compareTo(otherFlat.ratingToSortBy);
+		return this.finalRating.compareTo(otherFlat.finalRating);
 	}
 }

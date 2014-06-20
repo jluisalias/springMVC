@@ -3,6 +3,8 @@ package com.mytutorial.rateflats.extra;
 import java.util.Collections;
 import java.util.List;
 
+import javax.naming.directory.InvalidAttributesException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,11 +41,11 @@ private static final long serialVersionUID = 1L;
 		return result;
 	}
 
-	public void reCalculateRatings(RatingsCalculator ratingsCalculator) {
+	public void reCalculateRatings(RatingsCalculator ratingsCalculator) throws InvalidAttributesException {
 		// TODO Auto-generated method stub
 		List<Flat> result = flatDAO.getAllFlats();
 		for(Flat flat : result){
-			flat.setMyRating(ratingsCalculator.calculate(flat.returnRateArea(), 
+			flat.setFinalRating(ratingsCalculator.calculate(flat.returnRateArea(), 
 					flat.getMyRating(), flat.returnRatePrice(), 
 					flat.returnRateDistance()));
 		}

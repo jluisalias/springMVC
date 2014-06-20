@@ -12,10 +12,6 @@
     <param-value>/WEB-INF/spring/applicationContext.xml</param-value>
   </context-param>
   
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  
   <servlet>
   	<servlet-name>RateFlats</servlet-name>
   	<servlet-class>

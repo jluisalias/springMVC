@@ -1,0 +1,88 @@
+@import url(fonts/yanone/yanone-font.css);
+@import url(fonts/linlibertine/linlibertine-font.css);
+
+body {
+	background-color: #38D543;
+}
+
+#box_title{
+	width:50%;
+}
+
+.title {
+	padding: 0 .3em .3em .5em;
+	font-family: 'Yanone Regular', sans-serif;
+	font-size: 4.4em;
+	color: #B9F789;
+}
+
+.subtitle {
+	padding: 0 .3em .3em 1.7em;
+	font-family: 'Yanone Light', sans-serif;
+	font-size: 2.1em;
+	color: #375C1B;
+}
+
+label {
+	font-family: 'Linux Libertine Semibold', serif;
+	font-size: 1.3em;
+	color: #CEFCBE;
+}
+
+form {
+	margin:1.5em .3em 1.5em .3em;
+	
+	width:60%;
+}
+
+fieldset {
+	font-family: 'Linux Libertine Semibold', serif;
+	font-size: 1.5em;
+	color: #CEFCBE;
+	border: solid 2px #CBDCC5;
+	background: -webkit-linear-gradient(#8AC16F, #658555);
+    background: -o-linear-gradient(#8AC16F, #658555);
+    background: -moz-linear-gradient(#8AC16F, #658555);
+    background: linear-gradient(#8AC16F, #658555);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8AC16F', endColorstr='#658555'); /* for IE */
+}
+
+.action {
+	font-family: 'Linux Libertine Semibold', serif;
+	font-size: .9em;
+	color: #F0F351;
+	text-decoration: none;
+	margin-left: 1em;
+}
+
+.action:hover {
+	color: #F3C631;
+}
+
+form label {
+	font-family: 'Linux Libertine Semibold', serif;
+	color: #F0F351;
+	font-size: .9em;
+	margin-left: 1em;
+}
+
+.buttonAlone{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.superindex {
+	font-size: .57em;
+	vertical-align:super;
+}
+
+#logo{
+	float:right;
+    background: url(images/logo.png) no-repeat;
+    background-size: 100% 100%;  
+    -moz-background-size: 100% 100%;
+    margin:0.3em;
+    height:170px;
+    width:170px;
+}

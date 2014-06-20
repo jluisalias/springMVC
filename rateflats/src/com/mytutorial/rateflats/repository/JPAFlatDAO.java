@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,7 @@ import com.mytutorial.rateflats.Flat;
 @Repository(value = "flatDao")
 public class JPAFlatDAO implements FlatDAO {
 	
+	@PersistenceContext(type = PersistenceContextType.EXTENDED) 
 	private EntityManager em = null;
 	
 	@PersistenceContext

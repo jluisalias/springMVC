@@ -1,4 +1,4 @@
-package com.mytutorial.tests;
+package com.tests.rateflats;
 
 import static org.junit.Assert.*;
 
@@ -52,6 +52,15 @@ public class TestsForFlat {
 		assertNotEquals(rate1, rate2);
 		boolean bigger = rate1 > rate2;
 		assertTrue(bigger);
+	}
+	
+	@Test
+	public void testCompareTo() {
+		flatSUT.setFinalRating(9.0);
+		Flat otherFlat = new Flat();
+		otherFlat.setFinalRating(5.0);
+		int compareToRes = flatSUT.compareTo(otherFlat);
+		assertTrue(compareToRes>0);
 	}
 	
 }
