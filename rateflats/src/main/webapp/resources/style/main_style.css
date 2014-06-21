@@ -31,7 +31,6 @@ label {
 
 form {
 	margin:1.5em .3em 1.5em .3em;
-	
 	width:60%;
 }
 
@@ -85,4 +84,34 @@ form label {
     margin:0.3em;
     height:170px;
     width:170px;
+}
+
+.table {
+	display: table;
+	margin 2em;
+	border: solid 2px #CBDCC5;
+	padding: 0;
+}
+
+.row {
+	display: table-row;
+	padding: 0;
+	background-color: #8AC16F;
+	color: #F0F351;
+}
+
+.row:HOVER {
+	background-color: #709F59;
+	color: #DFC838;
+}
+
+.cell {
+	display: table-cell;
+	font-family: 'Linux Libertine Semibold', serif;
+	font-size: 1.3em;
+	padding: 0 .3em 0 .3em;
+}
+
+#table_search {
+	max-width:30%;
 }

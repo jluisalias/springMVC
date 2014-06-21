@@ -43,4 +43,20 @@ public class JPAFlatDAO implements FlatDAO {
 		return em.createQuery("select f from Flat f").getResultList();
 	}
 
+	@Transactional(readOnly = true)
+	@SuppressWarnings("unchecked")
+	public List<Flat> searchFlatsByName(String keyFlat) {
+		// TODO Auto-generated method stub
+		return em.createQuery("select f from Flat f "
+				+ "where f.nameOfStreetandNumber = :keyFlat")
+				.setParameter("keyFlat", keyFlat).getResultList();
+	}
+
+	@Transactional(readOnly = true)
+	public Flat searchOneFlatById(int flatId) {
+		// TODO Auto-generated method stub
+		return (Flat)em.createQuery("select f from Flat f "
+				+ "where f.id = :flatId")
+				.setParameter("flatId", flatId).getSingleResult();
+	}
 }

@@ -1,7 +1,7 @@
 package com.mytutorial.rateflats;
 
+import javax.naming.directory.InvalidAttributesException;
 import javax.servlet.ServletException;
-import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mytutorial.rateflats.extra.RatingsCalculator;
 import com.mytutorial.rateflats.interfaces.FlatManager;
 
 @Controller
@@ -34,7 +33,7 @@ public class NewFlatController {
     }
 	
 	@RequestMapping(value = "/newFlat", method = RequestMethod.POST)
-	public String setWeights(@ModelAttribute("flat") Flat newFlat,
+	public String newFlat(@ModelAttribute("flat") Flat newFlat,
 			BindingResult result, ModelMap model) {
 		if(result.hasErrors()){
 			return "/newFlat";
@@ -44,7 +43,11 @@ public class NewFlatController {
 		String price = newFlat.getPriceByMonth().toString();
         logger.info("New flat to insert with address: " + address + "and price: "+price);
         
-        flatManager.createNewFlat(newFlat);
+        try {
+			flatManager.createNewFlat(newFlat);
+		} catch (InvalidAttributesException e) {
+			e.printStackTrace();
+		}
 
         return "/result";
 	}

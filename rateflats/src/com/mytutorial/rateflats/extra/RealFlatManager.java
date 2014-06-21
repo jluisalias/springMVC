@@ -24,8 +24,12 @@ private static final long serialVersionUID = 1L;
         this.flatDAO = flatDAO;
     }
 
-	public void createNewFlat(Flat newFlat) {
+	public void createNewFlat(Flat newFlat) throws InvalidAttributesException {
 		// TODO Auto-generated method stub
+		RatingsCalculator ratingsCalculator = new RatingsCalculator(1.0, 1.0, 1.0, 1.0);
+		newFlat.setFinalRating(ratingsCalculator.calculate(newFlat.returnRateArea(), 
+				newFlat.getMyRating(), newFlat.returnRatePrice(), 
+				newFlat.returnRateDistance()));
 		flatDAO.createNewFlat(newFlat);
 	}
 
@@ -48,7 +52,17 @@ private static final long serialVersionUID = 1L;
 			flat.setFinalRating(ratingsCalculator.calculate(flat.returnRateArea(), 
 					flat.getMyRating(), flat.returnRatePrice(), 
 					flat.returnRateDistance()));
+			flatDAO.saveFlat(flat);
 		}
+	}
+
+	public List<Flat> searchFlats(String keyFlat) {
+		List<Flat> result = flatDAO.searchFlatsByName(keyFlat);
+		return result;
+	}
+
+	public Flat searchOneFlatById(int flatId) {
+		return flatDAO.searchOneFlatById(flatId);
 	}
 
 }

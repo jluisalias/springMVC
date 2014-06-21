@@ -12,4 +12,7 @@ public interface FlatDAO {
     
     public List<Flat> getAllFlats();
     
+    public List<Flat> searchFlatsByName(String keyFlat);
+    
+    public Flat searchOneFlatById(int flatId);
 }
