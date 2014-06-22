@@ -14,7 +14,10 @@
 			<c:forEach items="${model.flats}" var="flat">
 				<div class="row">
 					<div class="cell">
-						<c:out value="${flat.nameOfStreetandNumber}"/>
+						<a class="action" href="/rateflats/detailsFlat?id=${flat.id}" >
+							<c:out value="${flat.nameOfStreetandNumber}"/>
+						</a>
+						
 					</div>
 					<div class="cell">
 						<a href="" class="delete">
@@ -25,6 +28,6 @@
 				</div>
     		</c:forEach>
 		</div>
-		
+		<input action="action" value="Volver" type="button" class="buttonAlone" onclick="history.go(-1);" />
 	</body>
 </html>

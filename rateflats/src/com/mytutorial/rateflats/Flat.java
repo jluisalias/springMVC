@@ -36,6 +36,9 @@ public class Flat implements Serializable, Comparable<Flat>{
 	public String getNameOfStreetandNumber() {
 		return nameOfStreetandNumber;
 	}
+	public Integer getId() {
+		return id;
+	}
 	public void setNameOfStreetandNumber(String nameOfStreetandNumber) {
 		this.nameOfStreetandNumber = nameOfStreetandNumber;
 	}

@@ -28,7 +28,7 @@ public class SearchFlatController {
     }
 	
 	@RequestMapping(value = "/searchFlat", method = RequestMethod.GET)
-	public ModelAndView searchFlat(String searchInput, 
+	public ModelAndView searchFlats(String searchInput, 
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		List<Flat> flats = this.flatManager.searchFlats(searchInput);

@@ -113,5 +113,89 @@ form label {
 }
 
 #table_search {
-	max-width:30%;
+	
+}
+
+.container {
+	margin: 1.3em 0 1.3em 2em;
+	padding: 1.1em;
+	width:60%;
+	font-family: 'Yanone Regular', sans-serif;
+	color: #CEFCBE;
+	font-size: 1.4em;
+	border: solid 2px #CBDCC5;
+	background: -webkit-linear-gradient(#8AC16F, #658555);
+    background: -o-linear-gradient(#8AC16F, #658555);
+    background: -moz-linear-gradient(#8AC16F, #658555);
+    background: linear-gradient(#8AC16F, #658555);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8AC16F', endColorstr='#658555'); /* for IE */
+}
+
+#address {
+	font-size: 1.7em;
+}
+
+#rating{
+	font-size: 2.2em;
+	color: #4FD9FB;
+	float: right;
+	margin: .2em;
+}
+
+#line_1{
+	color: #F2F47C;
+	margin: .2em 0 .5em 0;
+	font-family: 'Linux Libertine Semibold', serif;
+	font-size: .85em;
+}
+
+.line_1A {
+	float:left;
+	margin-left:.8em;
+	margin-right: 1.5em;
+}
+
+.line_1B {
+	padding-top: .06em;
+}
+
+#comments_box{
+	border: solid 1px #C7E0C9;
+	margin:1em;
+	padding: .5em;
+	background: -webkit-linear-gradient(#A0FC7B, #64CF06);
+    background: -o-linear-gradient(#A0FC7B, #64CF06);
+    background: -moz-linear-gradient(#A0FC7B, #64CF06);
+    background: linear-gradient(#A0FC7B, #64CF06);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A0FC7B', endColorstr='#64CF06'); /* for IE */
+	font-family: 'Linux Libertine Bold', serif;
+	font-size: .7em;
+	color: #577A3B;
+}
+
+#url_box {
+	text-align: right;
+	margin-right: 3em;
+	font-family: 'Linux Libertine Bold', serif;
+	font-size: .75em;
+}
+
+#url_box a{
+	color: #CAF671;
+	text-decoration: none;
+	font-size: 1.35em;
+}
+
+#price {
+	margin:.3em;
+	color: #F5930A;
+	width: inherit;
+	padding: .15em;
+	font-size: 3.5em;
+	border: solid 2px #496B45;
+	background: -webkit-linear-gradient(#F4F9AD, #E9F174);
+    background: -o-linear-gradient(#F4F9AD, #E9F174);
+    background: -moz-linear-gradient(#F4F9AD, #E9F174);
+    background: linear-gradient(#F4F9AD, #E9F174);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F4F9AD', endColorstr='#E9F174'); /* for IE */
 }
