@@ -86,34 +86,61 @@ form label {
     width:170px;
 }
 
-.table {
-	display: table;
-	margin 2em;
-	border: solid 2px #CBDCC5;
-	padding: 0;
+#search_result {
+	margin: 1.5em 0 0 4.5em;
 }
 
-.row {
-	display: table-row;
-	padding: 0;
+#table_search {
+	margin-bottom: .3em;
+	border: solid 2px #CBDCC5;
+	font-family: 'Linux Libertine Semibold', serif;
+	font-size: 1.4em;
+	border-collapse:collapse; 
+}
+
+#table_search th {
+	font-family: 'Yanone Light', sans-serif;
+	font-size: 1.5em;
+	background-color: #BDE2C9;
+	color: #206034;
+}
+
+.row_search {
 	background-color: #8AC16F;
 	color: #F0F351;
 }
 
-.row:HOVER {
+.row_search:HOVER {
 	background-color: #709F59;
 	color: #DFC838;
 }
 
 .cell {
-	display: table-cell;
-	font-family: 'Linux Libertine Semibold', serif;
-	font-size: 1.3em;
-	padding: 0 .3em 0 .3em;
+	padding: 0 2em 0 .3em;
 }
 
-#table_search {
-	
+a#logo_delete{
+	float:left;
+	background: url(images/Trash.png) no-repeat;
+    background-size: 100% 100%;  
+    -moz-background-size: 100% 100%;
+    width:21px;
+	height:21px;
+	margin-right: .6em;
+}
+
+a#logo_edit{
+	float:left;
+	background: url(images/Pencil.png) no-repeat;
+    background-size: 100% 100%;  
+    -moz-background-size: 100% 100%;
+    width:21px;
+	height:21px;
+}
+
+.edit_delete {
+	width:21px;
+	height:21px;
 }
 
 .container {
@@ -199,3 +226,4 @@ form label {
     background: linear-gradient(#F4F9AD, #E9F174);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F4F9AD', endColorstr='#E9F174'); /* for IE */
 }
+

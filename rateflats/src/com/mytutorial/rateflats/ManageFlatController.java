@@ -73,4 +73,18 @@ public class ManageFlatController {
 
         return "/result";
 	}
+	
+	@RequestMapping(value = "/editFlat")
+	public ModelAndView editFlat(@RequestParam("id")int flatId, @ModelAttribute("flat") Flat flatToOpen,
+    		BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+		
+		flatToOpen = this.flatManager.searchOneFlatById(flatId);
+        logger.info("Edit the flat" + flatToOpen.getNameOfStreetandNumber());
+        
+        Map<String, Object> myModel = new HashMap<String, Object>();
+
+        myModel.put("flat", flatToOpen);
+
+        return new ModelAndView("editFlat", "model", myModel);
+	}
 }

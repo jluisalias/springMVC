@@ -9,25 +9,29 @@
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/layouts/Title.jsp" %>
-		<label>Resultado de la búsqueda</label>
-		<div class="table" id="table_search">
-			<c:forEach items="${model.flats}" var="flat">
-				<div class="row">
-					<div class="cell">
-						<a class="action" href="/rateflats/detailsFlat?id=${flat.id}" >
-							<c:out value="${flat.nameOfStreetandNumber}"/>
-						</a>
-						
-					</div>
-					<div class="cell">
-						<a href="" class="delete">
-					</div>
-					<div class="cell">
-						<a href="" class="edit">
-					</div>
-				</div>
-    		</c:forEach>
+		<div id="search_result">
+			<label>Resultado de la búsqueda</label>
+			<table id="table_search">
+				<tr>
+					<th>DIRECCIÓN </th> <th></th> <th></th>
+				</tr>
+				<c:forEach items="${model.flats}" var="flat">
+					<tr class="row_search">
+						<td class="cell">
+							<a class="action" href="/rateflats/detailsFlat?id=${flat.id}" >
+								<c:out value="${flat.nameOfStreetandNumber}"/>
+							</a>
+						</td>
+						<td class="edit_delete">
+							<a href="/rateflats/editFlat?id=${flat.id}" id="logo_edit"></a>
+						</td>
+						<td class="edit_delete">
+							<a href="/rateflats" id="logo_delete"></a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<input value="Volver" type="button" onclick="history.go(-1);" />
 		</div>
-		<input action="action" value="Volver" type="button" class="buttonAlone" onclick="history.go(-1);" />
 	</body>
 </html>

@@ -47,8 +47,9 @@ public class JPAFlatDAO implements FlatDAO {
 	@SuppressWarnings("unchecked")
 	public List<Flat> searchFlatsByName(String keyFlat) {
 		// TODO Auto-generated method stub
+		keyFlat = "%"+keyFlat+"%";
 		return em.createQuery("select f from Flat f "
-				+ "where f.nameOfStreetandNumber = :keyFlat")
+				+ "where f.nameOfStreetandNumber LIKE :keyFlat")
 				.setParameter("keyFlat", keyFlat).getResultList();
 	}
 
