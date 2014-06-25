@@ -29,19 +29,23 @@
 	</p>
 	<p>
 		<form:label path="comments">Comentarios: </form:label>
-		<form:textarea path="comments" value="${model.flat.comments}"></form:textarea>
+		<textarea id="comments" name="comments"><c:out value="${model.flat.comments}"/></textarea>
 	</p>
 	<p>
 		<form:label path="isCommunityIncluded">¿Comunidad incluida?: </form:label>
-		<form:checkbox path="isCommunityIncluded" value="${model.flat.isCommunityIncluded}"/>
+		<input 	id="isCommunityIncluded" name="isCommunityIncluded" value="true" 
+				type="checkbox" ${model.flat.isCommunityIncluded ? 'checked' : null}>
 	</p>
+	
 	<p>
 		<form:label path="isWaterIncluded">¿Agua incluida?: </form:label>
-		<form:checkbox path="isWaterIncluded" value="${model.flat.isWaterIncluded}" />
+		<input 	id="isWaterIncluded" name="isWaterIncluded" value="true" 
+				type="checkbox" ${model.flat.isWaterIncluded ? 'checked' : null}>
 	</p>
 	<p>
 		<form:label path="isPermittedAContractOfSixMonths">¿Permite contrato de 6 meses?: </form:label>
-		<form:checkbox path="isPermittedAContractOfSixMonths" value="${model.flat.isPermittedAContractOfSixMonths}" />
+		<input 	id="isPermittedAContractOfSixMonths" name="isPermittedAContractOfSixMonths" value="true" 
+				type="checkbox" ${model.flat.isPermittedAContractOfSixMonths ? 'checked' : null}>
 	</p>
 	<p>
 		<input class ="buttonAlone" type="submit" value="Aceptar"/>
