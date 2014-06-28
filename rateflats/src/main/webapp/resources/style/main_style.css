@@ -227,3 +227,12 @@ a#logo_edit{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F4F9AD', endColorstr='#E9F174'); /* for IE */
 }
 
+.invisible {
+	display: none;
+}
+
+.three_buttons{
+	width:40%;
+	margin-right: auto;
+	margin-left: auto;
+}

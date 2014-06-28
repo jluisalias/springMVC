@@ -74,9 +74,9 @@ public class ManageFlatController {
         return "/result";
 	}
 	
-	@RequestMapping(value = "/editFlat")
-	public ModelAndView editFlat(@RequestParam("id")int flatId, @ModelAttribute("flat") Flat flatToOpen,
-    		BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/editFlat", method = RequestMethod.GET)
+	public ModelAndView preEditFlat(@RequestParam("id")int flatId, @ModelAttribute("flat") Flat flatToOpen,
+    		BindingResult result) {
 		
 		flatToOpen = this.flatManager.searchOneFlatById(flatId);
         logger.info("Edit the flat" + flatToOpen.getNameOfStreetandNumber());
@@ -86,5 +86,27 @@ public class ManageFlatController {
         myModel.put("flat", flatToOpen);
 
         return new ModelAndView("editFlat", "model", myModel);
+	}
+	
+	@RequestMapping(value = "/editFlat", method = RequestMethod.POST)
+	public ModelAndView editFlat(@ModelAttribute("flat") Flat flatToEdit,
+			BindingResult result, @RequestParam("id")int flatId) {
+		
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		
+		if(result.hasErrors()){
+			myModel.put("flat", flatToEdit);
+			return new ModelAndView("editFlat", "model", myModel);
+		}
+		
+		flatToEdit.setId(flatId);
+		String address = flatToEdit.getNameOfStreetandNumber();
+		String price = flatToEdit.getPriceByMonth().toString();
+        logger.info("New flat to insert with address: " + address + "and price: "+price);
+        
+        flatManager.saveFlat(flatToEdit);
+        
+        myModel.put("flat", flatToEdit);
+        return new ModelAndView("detailsFlat", "model", myModel);
 	}
 }

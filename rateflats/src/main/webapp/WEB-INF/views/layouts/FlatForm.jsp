@@ -51,3 +51,5 @@
 		<input class ="buttonAlone" type="submit" value="Aceptar"/>
 	</p>
 </fieldset>
+
+<input value="Volver" type="button" onclick="history.go(-1);" />

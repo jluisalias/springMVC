@@ -9,8 +9,11 @@
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/layouts/Title.jsp" %>
-		<form:form 	id="editFlat" method="POST" commandName="flatToOpen" 
+		<form:form 	id="editFlat" method="POST" commandName="flatToEdit" 
 					modelAttribute="flat">
+			<div class="invisible">
+				<form:input path="id" value="${model.flat.id}" />
+			</div>
 			<%@ include file="/WEB-INF/views/layouts/FlatForm.jsp" %>
 		</form:form>
    </body>

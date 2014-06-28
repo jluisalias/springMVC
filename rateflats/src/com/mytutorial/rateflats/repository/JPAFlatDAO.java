@@ -33,7 +33,11 @@ public class JPAFlatDAO implements FlatDAO {
 	@Transactional(readOnly = false)
 	public void saveFlat(Flat flatToSave) {
 		// TODO Auto-generated method stub
-		em.merge(flatToSave);
+		Flat oldFlat = (Flat)em.createQuery("select f from Flat f "
+				+ "where f.id = :flatId")
+				.setParameter("flatId", flatToSave.getId()).getSingleResult();
+		oldFlat = flatToSave;
+		em.merge(oldFlat);
 	}
 
 	@Transactional(readOnly = true)

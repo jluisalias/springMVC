@@ -19,7 +19,12 @@
 			<div id="comments_box">COMENTARIOS - <c:out value="${model.flat.comments}"/></div>
 			<div id="url_box">Dirección web: <a href="<c:out value="${model.flat.url}"/>"><c:out value="${model.flat.url}"/></a> </div>
 			<div id="price"><c:out value="${model.flat.priceByMonth}"/> euros al mes</div>
-			<input action="action" value="Volver" type="button" class="buttonAlone" onclick="history.go(-1);" />
+			<div class="three_buttons">
+				<input action="action" value="Volver" type="button" onclick="history.go(-1);" />
+				<input onclick="window.location='/rateflats/editFlat?id=${model.flat.id}';" value="Editar" type="button"/>
+				<input onclick="window.location='/rateflats/deleteFlat?id=${model.flat.id}';" value="Eliminar" type="button"/>				
+			</div>
+			
 		</div>
 	</body>
 </html>
