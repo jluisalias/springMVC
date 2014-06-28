@@ -13,6 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -56,7 +57,7 @@ public class ManageFlatController {
 	
 	@RequestMapping(value = "/newFlat", method = RequestMethod.POST)
 	public String newFlat(@ModelAttribute("flat") Flat newFlat,
-			BindingResult result, ModelMap model) {
+			BindingResult result, HttpServletRequest request, ModelMap model) {
 		if(result.hasErrors()){
 			return "/newFlat";
 		}
@@ -71,7 +72,8 @@ public class ManageFlatController {
 			e.printStackTrace();
 		}
 
-        return "/result";
+        String redirectUrl = request.getScheme() + "://localhost:8080/rateflats/";
+        return "redirect:" + redirectUrl;
 	}
 	
 	@RequestMapping(value = "/editFlat", method = RequestMethod.GET)
@@ -102,11 +104,46 @@ public class ManageFlatController {
 		flatToEdit.setId(flatId);
 		String address = flatToEdit.getNameOfStreetandNumber();
 		String price = flatToEdit.getPriceByMonth().toString();
-        logger.info("New flat to insert with address: " + address + "and price: "+price);
+        logger.info("Edit flat with address: " + address + "and price: "+price);
         
         flatManager.saveFlat(flatToEdit);
         
         myModel.put("flat", flatToEdit);
         return new ModelAndView("detailsFlat", "model", myModel);
+	}
+	
+	@RequestMapping(value = "/deleteFlat", method = RequestMethod.GET)
+	public ModelAndView preDeleteFlat(@RequestParam("id")int flatId, 
+			@ModelAttribute("flat") Flat flatToDelete, BindingResult result) {
+		
+		flatToDelete = this.flatManager.searchOneFlatById(flatId);
+        logger.info("Edit the flat" + flatToDelete.getNameOfStreetandNumber());
+        
+        Map<String, Object> myModel = new HashMap<String, Object>();
+
+        myModel.put("flat", flatToDelete);
+
+        return new ModelAndView("areYouSure", "model", myModel);
+	}
+	
+	@RequestMapping(value = "/deleteFlat", method = RequestMethod.POST)
+	public String deleteFlat(@ModelAttribute("flat") Flat flatToDelete,
+			BindingResult result, @RequestParam("id")int flatId, Model model,
+			HttpServletRequest request) {
+		
+		flatToDelete = flatManager.searchOneFlatById(flatId);
+		if(result.hasErrors()){
+			model.addAttribute("flat", flatToDelete);
+			return "areYouSure";
+		}
+		
+		String address = flatToDelete.getNameOfStreetandNumber();
+		String price = flatToDelete.getPriceByMonth().toString();
+        logger.info("Delete Flat with address: " + address + "and price: "+price);
+        
+        flatManager.removeFlatWithId(flatId);
+        
+        String redirectUrl = request.getScheme() + "://localhost:8080/rateflats/";
+        return "redirect:" + redirectUrl;
 	}
 }

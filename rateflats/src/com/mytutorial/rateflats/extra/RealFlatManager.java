@@ -65,4 +65,8 @@ private static final long serialVersionUID = 1L;
 		return flatDAO.searchOneFlatById(flatId);
 	}
 
+	public void removeFlatWithId(int flatId) {
+		flatDAO.removeFlatWithId(flatId);		
+	}
+
 }

@@ -19,6 +19,8 @@ public interface FlatManager extends Serializable {
     public List<Flat> searchFlats(String keyFlat);
     
     public Flat searchOneFlatById(int flatId);
+    
+    public void removeFlatWithId(int flatId);
 
 	public void reCalculateRatings(RatingsCalculator ratingsCalculator) throws InvalidAttributesException;
 }

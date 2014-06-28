@@ -26,7 +26,7 @@
 							<a href="/rateflats/editFlat?id=${flat.id}" id="logo_edit"></a>
 						</td>
 						<td class="edit_delete">
-							<a href="/rateflats" id="logo_delete"></a>
+							<a href="/rateflats/deleteFlat?id=${flat.id}" id="logo_delete"></a>
 						</td>
 					</tr>
 				</c:forEach>

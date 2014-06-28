@@ -3,11 +3,9 @@ package com.mytutorial.rateflats.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,5 +61,14 @@ public class JPAFlatDAO implements FlatDAO {
 		return (Flat)em.createQuery("select f from Flat f "
 				+ "where f.id = :flatId")
 				.setParameter("flatId", flatId).getSingleResult();
+	}
+
+	@Transactional(readOnly = false)
+	public void removeFlatWithId(int flatId) {
+		// TODO Auto-generated method stub
+		Flat flatToRemove = (Flat)em.createQuery("select f from Flat f "
+				+ "where f.id = :flatId")
+				.setParameter("flatId", flatId).getSingleResult();
+		em.remove(em.merge(flatToRemove));
 	}
 }

@@ -1,5 +1,6 @@
 package com.mytutorial.rateflats;
 
+import javax.naming.directory.InvalidAttributesException;
 import javax.servlet.ServletException;
 import javax.validation.Valid;
 
@@ -49,9 +50,11 @@ public class SetWeightsController {
         double distanceWeight = ratingsCalculator.getDistanceWeight();
         logger.info("Distance weight is: " + distanceWeight + "%.");
 
-        //flatManager.reCalculateRatings(ratingsCalculator);
-        
-        model.addAttribute("areaWeightString", ratingsCalculator.getAreaWeight());
+        try {
+			flatManager.reCalculateRatings(ratingsCalculator);
+		} catch (InvalidAttributesException e) {
+			e.printStackTrace();
+		}
 
         return "/result";
 	}
