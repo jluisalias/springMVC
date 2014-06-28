@@ -4,13 +4,13 @@
 
 <html>
 	<head>
-		<title>Resultado de la búsqueda</title>
+		<title>Cambiando pesos de las valoraciones</title>
 		<%@ include file="/WEB-INF/views/layouts/Style.jsp" %>
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/layouts/Title.jsp" %>
 		<div id="search_result">
-			<label>Resultado de la búsqueda</label>
+			<label>Ranking de viviendas</label>
 			<table id="table_search">
 				<tr>
 					<th>DIRECCIÓN </th> <th></th> <th></th>
@@ -33,5 +33,5 @@
 			</table>
 			<input value="Volver" type="button" onclick="history.go(-1);" />
 		</div>
-	</body>
+   </body>
 </html>

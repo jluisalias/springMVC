@@ -1,7 +1,6 @@
 package com.mytutorial.rateflats;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.naming.directory.InvalidAttributesException;

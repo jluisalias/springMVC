@@ -1,14 +1,15 @@
 package com.mytutorial.rateflats;
 
+import java.util.List;
+
 import javax.naming.directory.InvalidAttributesException;
 import javax.servlet.ServletException;
-import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +36,8 @@ public class SetWeightsController {
     }
 	
 	@RequestMapping(value = "/setWeights", method = RequestMethod.POST)
-	public String setWeights(@ModelAttribute("calculator") RatingsCalculator ratingsCalculator,
-			BindingResult result, ModelMap model) {
+	public String setWeights(Model model, @ModelAttribute("calculator") RatingsCalculator ratingsCalculator, 
+			BindingResult result) {
 		if(result.hasErrors()){
 			return "/setWeights";
 		}
@@ -55,7 +56,12 @@ public class SetWeightsController {
 		} catch (InvalidAttributesException e) {
 			e.printStackTrace();
 		}
+        
+        List<Flat> flats = this.flatManager.getSortedFlats();
+        logger.info(flats.size()+" flats");
 
-        return "/result";
+        model.addAttribute("flats", flats);
+
+        return "/resultList";
 	}
 }
