@@ -10,7 +10,7 @@ public interface FlatDAO {
 	
 	public void saveFlat(Flat flatToSave);
     
-    public List<Flat> getAllFlats();
+    public List<Flat> getAllFlatsSorted();
     
     public List<Flat> searchFlatsByName(String keyFlat);
     

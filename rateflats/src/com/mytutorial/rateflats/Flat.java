@@ -1,6 +1,8 @@
 package com.mytutorial.rateflats;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -91,21 +93,21 @@ public class Flat implements Serializable, Comparable<Flat>{
 	}
 	
 	public Boolean getIsCommunityIncluded() {
-		return isCommunityIncluded;
+		return isCommunityIncluded == null ? false : true;
 	}
 	public void setIsCommunityIncluded(Boolean isCommunityIncluded) {
 		this.isCommunityIncluded = isCommunityIncluded;
 	}
 	
 	public Boolean getIsWaterIncluded() {
-		return isWaterIncluded;
+		return isWaterIncluded == null ? false : true;
 	}
 	public void setIsWaterIncluded(Boolean isWaterIncluded) {
 		this.isWaterIncluded = isWaterIncluded;
 	}
 	
 	public Boolean getIsPermittedAContractOfSixMonths() {
-		return isPermittedAContractOfSixMonths;
+		return isPermittedAContractOfSixMonths == null ? false : true;
 	}
 	public void setIsPermittedAContractOfSixMonths(
 			Boolean isPermittedAContractOfSixMonths) {
@@ -116,7 +118,14 @@ public class Flat implements Serializable, Comparable<Flat>{
 		return finalRating;
 	}
 	public void setFinalRating(Double finalRating) {
-		this.finalRating = finalRating;
+		NumberFormat formatter = NumberFormat.getInstance();
+		formatter.setMaximumFractionDigits(2);
+		String stringFinalRating = formatter.format(finalRating);
+		try {
+			this.finalRating  = formatter.parse(stringFinalRating).doubleValue();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Double returnRateDistance(){
@@ -134,12 +143,12 @@ public class Flat implements Serializable, Comparable<Flat>{
 	public Double returnRatePrice(){
 		Double ratePrice = 5.0;
 		int price = this.priceByMonth;
-		if(price<330){
-			price = 330;
+		if(price<300){
+			price = 300;
 		}else if (price>400) {
 			price = 400;
 		}
-		ratePrice = ratePrice + ((400.0-price)/14);
+		ratePrice = ratePrice + ((400.0-price)/20);
 		return ratePrice;
 	}
 	
@@ -148,10 +157,10 @@ public class Flat implements Serializable, Comparable<Flat>{
 		int area = this.areaSize;
 		if(area<30){
 			area = 30;
-		}else if (area>90) {
-			area = 90;
+		}else if (area>110) {
+			area = 110;
 		}
-		rateArea = rateArea + ((area-30.0)/12);
+		rateArea = rateArea + ((area-30.0)/16);
 		return rateArea;
 	}
 	public int compareTo(Flat otherFlat) {

@@ -105,7 +105,12 @@ public class ManageFlatController {
 		String price = flatToEdit.getPriceByMonth().toString();
         logger.info("Edit flat with address: " + address + "and price: "+price);
         
-        flatManager.saveFlat(flatToEdit);
+        try {
+			flatManager.saveFlat(flatToEdit);
+		} catch (InvalidAttributesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         myModel.put("flat", flatToEdit);
         return new ModelAndView("detailsFlat", "model", myModel);

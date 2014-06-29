@@ -12,7 +12,7 @@ public interface FlatManager extends Serializable {
 
 	public void createNewFlat(Flat newFlat) throws InvalidAttributesException;
 	
-	public void saveFlat(Flat flatToSave);
+	public void saveFlat(Flat flatToSave) throws InvalidAttributesException;
     
     public List<Flat> getSortedFlats();
     

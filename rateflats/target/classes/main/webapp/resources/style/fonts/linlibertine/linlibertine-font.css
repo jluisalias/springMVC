@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'Linux Libertine Bold';
+    src: url('linlibertine_bold-webfont.eot');
+    src: url('linlibertine_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('linlibertine_bold-webfont.woff') format('woff'),
+         url('linlibertine_bold-webfont.ttf') format('truetype'),
+         url('linlibertine_bold-webfont.svg#linux_libertinebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Linux Libertine Italic';
+    src: url('linlibertine_italic-webfont.eot');
+    src: url('linlibertine_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('linlibertine_italic-webfont.woff') format('woff'),
+         url('linlibertine_italic-webfont.ttf') format('truetype'),
+         url('linlibertine_italic-webfont.svg#linux_libertineitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Linux Libertine Regular';
+    src: url('linlibertine_regular-webfont.eot');
+    src: url('linlibertine_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('linlibertine_regular-webfont.woff') format('woff'),
+         url('linlibertine_regular-webfont.ttf') format('truetype'),
+         url('linlibertine_regular-webfont.svg#linux_libertineregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Linux Libertine Semibold';
+    src: url('linlibertine_semibold-webfont.eot');
+    src: url('linlibertine_semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('linlibertine_semibold-webfont.woff') format('woff'),
+         url('linlibertine_semibold-webfont.ttf') format('truetype'),
+         url('linlibertine_semibold-webfont.svg#linux_libertinesemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,6 +1,5 @@
 package com.mytutorial.rateflats.extra;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.naming.directory.InvalidAttributesException;
@@ -33,25 +32,39 @@ private static final long serialVersionUID = 1L;
 		flatDAO.createNewFlat(newFlat);
 	}
 
-	public void saveFlat(Flat flatToSave) {
+	public void saveFlat(Flat flatToSave) throws InvalidAttributesException {
 		// TODO Auto-generated method stub
+		RatingsCalculator ratingsCalculator = new RatingsCalculator(1.0, 1.0, 1.0, 1.0);
+		flatToSave.setFinalRating(ratingsCalculator.calculate(flatToSave.returnRateArea(), 
+				flatToSave.getMyRating(), flatToSave.returnRatePrice(), 
+				flatToSave.returnRateDistance()));
 		flatDAO.saveFlat(flatToSave);
 	}
 
 	public List<Flat> getSortedFlats() {
 		// TODO Auto-generated method stub
-		List<Flat> result = flatDAO.getAllFlats();
-		Collections.reverse(result);
+		List<Flat> result = flatDAO.getAllFlatsSorted();
 		return result;
 	}
 
 	public void reCalculateRatings(RatingsCalculator ratingsCalculator) throws InvalidAttributesException {
 		// TODO Auto-generated method stub
-		List<Flat> result = flatDAO.getAllFlats();
+		List<Flat> result = flatDAO.getAllFlatsSorted();
+		Double addPlus;
 		for(Flat flat : result){
+			addPlus = 0.0;
+			if(flat.getIsCommunityIncluded()){
+				addPlus+=0.3;
+			}
+			if(flat.getIsPermittedAContractOfSixMonths()){
+				addPlus+=0.3;
+			}
+			if(flat.getIsWaterIncluded()){
+				addPlus+=0.3;
+			}
 			flat.setFinalRating(ratingsCalculator.calculate(flat.returnRateArea(), 
 					flat.getMyRating(), flat.returnRatePrice(), 
-					flat.returnRateDistance()));
+					flat.returnRateDistance())+addPlus);
 			flatDAO.saveFlat(flat);
 		}
 	}

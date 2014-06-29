@@ -40,9 +40,9 @@ public class JPAFlatDAO implements FlatDAO {
 
 	@Transactional(readOnly = true)
     @SuppressWarnings("unchecked")
-	public List<Flat> getAllFlats() {
+	public List<Flat> getAllFlatsSorted() {
 		// TODO Auto-generated method stub
-		return em.createQuery("select f from Flat f").getResultList();
+		return em.createQuery("select f from Flat f order by f.finalRating DESC").getResultList();
 	}
 
 	@Transactional(readOnly = true)
